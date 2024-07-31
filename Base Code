@@ -1,0 +1,221 @@
+package com.example.business_card
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            Business_Card()
+        }
+    }
+}
+
+@Composable
+fun BusinessCardApp() {
+    MaterialTheme {
+        Business_Card()
+    }
+}
+
+@Composable
+fun Business_Card() {
+    val image = painterResource(R.drawable.android_logo)
+    val image1 = painterResource(R.drawable.github)
+    val image2 = painterResource(R.drawable.gmail)
+    val image3 = painterResource(R.drawable.insta)
+    Surface(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(0.dp),
+        color = Color.hsl(hue = 120f, saturation = 0.5f, lightness = 0.6f),
+        shape = RoundedCornerShape(0.dp),
+
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+
+        ) {
+            Spacer(modifier = Modifier.height(80.dp))
+
+            // Placeholder for a profile image
+            Box(
+                modifier = Modifier
+                    .size(220.dp)
+                    .background( Color.Black, shape = RoundedCornerShape(110.dp)),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    painter = image,
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit
+                )
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(
+                text = "Rohan Bagaria",
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 40.sp
+                ),
+
+                textAlign = TextAlign.Center
+            )
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Text(
+                text = "Android Developer",
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 20.sp
+                ),
+                color = Color.hsl(hue = 120f, saturation = 0.5f, lightness = 0.31f),
+                textAlign = TextAlign.Center
+            )
+
+            Spacer(modifier = Modifier.height(250.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Row item 1
+                Box(
+                    modifier = Modifier
+                        .size(30.dp)
+                        .background(Color.White, shape = RoundedCornerShape(15.dp)),
+
+                    )
+                {
+                    Image(
+                        painter = image1,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop
+                    )
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                Text(
+                    text = "RohanBagaria12",
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                    fontSize = 20.sp
+                     ),
+                    color = Color.Blue,
+                    textAlign = TextAlign.Center,
+
+           )
+            }
+
+
+            Spacer(modifier = Modifier.height(1.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Row item 1
+                Box(
+                    modifier = Modifier
+                        .size(30.dp)
+                        .background(Color.Gray, shape = RoundedCornerShape(15.dp)),
+
+                    ) {
+                    Image(
+                        painter = image2,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop
+                    )
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                Text(
+                    text = "bagariarohan77@gmail.com",
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        fontSize = 20.sp
+                    ),
+                    color = Color.Blue,
+                    textAlign = TextAlign.Center,
+
+                    )
+            }
+            Spacer(modifier = Modifier.height(1.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Row item 1
+                Box(
+                    modifier = Modifier
+                       .size(30.dp)
+                       .background(Color.Gray, shape = RoundedCornerShape(15.dp)),
+
+            ) {
+                    Image(
+                        painter = image3,
+                        contentDescription = null,
+                        contentScale = ContentScale.Fit
+                    )
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                Text(
+                    text = "__wandering_spirit",
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        fontSize = 20.sp
+                    ),
+                    color = Color.Blue,
+                    textAlign = TextAlign.Center,
+
+                    )
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewBusiness_Card() {
+    BusinessCardApp()
+}
